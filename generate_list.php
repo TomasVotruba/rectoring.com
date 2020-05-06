@@ -21,25 +21,26 @@ $languagesAndNamedLinks = [
 ];
 
 
-$linksHtml = '';
+$linksHtml = "\n";
 
-$linksHtml .= "<ul>\n";
+$linksHtml .= "  <ul>\n";
 
 foreach ($languagesAndNamedLinks as $language => $namedLinks) {
-    $linksHtml .= "<li>" . $language . "<ul>\n";
+    $linksHtml .= "    <li>" . $language . "\n";
+    $linksHtml .= "      <ul>\n";
     foreach ($namedLinks as $name => $link) {
         $linksHtml .= sprintf(
-            "<li><a href='%s'>%s</a></li>\n",
+            "        <li><a href='%s'>%s</a></li>\n",
             $link,
             $name
         );
     }
 
-    $linksHtml .= "</ul>\n";
-    $linksHtml .= "</li>\n";
+    $linksHtml .= "      </ul>\n";
+    $linksHtml .= "    </li>\n";
 }
 
-$linksHtml .= "</ul>\n";
+$linksHtml .= "  </ul>\n";
 $linksHtml .= "\n";
 
 
@@ -70,7 +71,7 @@ if ($endMarkerPosition <= $beginMarkerPosition) {
 
 
 $beforeContent = substr($fileContents, 0, $beginMarkerPosition + strlen($beginMarker));
-$afterContent = substr($fileContents, 0, $beginMarkerPosition);
+$afterContent = substr($fileContents, $endMarkerPosition);
 
 $newContents = $beforeContent . $linksHtml . $afterContent;
 
