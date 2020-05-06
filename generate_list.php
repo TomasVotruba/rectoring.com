@@ -1,0 +1,81 @@
+<?php
+
+declare(strict_types = 1);
+
+$beginMarker = "<!-- List begin -->";
+$endMarker = "<!-- List end -->";
+
+// Please keep these in alphabetical order
+$languagesAndNamedLinks = [
+    'PHP' => [
+        'PHP' => 'https://getrector.org/'
+    ],
+    'Python' => [
+        'Bowler' => 'https://pybowler.io/',
+        'Rope' => 'https://github.com/python-rope/rope'
+    ],
+    'TypeScript' => [
+        'tsmod' => 'https://github.com/WolkSoftware/tsmod',
+        'vscode-refactorix' => 'https://github.com/krizzdewizz/vscode-refactorix',
+    ]
+];
+
+
+$linksHtml = '';
+
+$linksHtml .= "<ul>\n";
+
+foreach ($languagesAndNamedLinks as $language => $namedLinks) {
+    $linksHtml .= "<li>" . $language . "<ul>\n";
+    foreach ($namedLinks as $name => $link) {
+        $linksHtml .= sprintf(
+            "<li><a href='%s'>%s</a></li>\n",
+            $link,
+            $name
+        );
+    }
+
+    $linksHtml .= "</ul>\n";
+    $linksHtml .= "</li>\n";
+}
+
+$linksHtml .= "</ul>\n";
+$linksHtml .= "\n";
+
+
+$fileContents = file_get_contents(__DIR__ . "/index.html");
+
+if ($fileContents === false) {
+    echo "Failed to open index.html";
+    exit(-1);
+}
+
+$beginMarkerPosition = strpos($fileContents, $beginMarker);
+$endMarkerPosition = strpos($fileContents, $endMarker);
+
+if ($beginMarkerPosition === false) {
+    echo "Failed to find begin marker [$beginMarker]";
+    exit(-1);
+}
+
+if ($endMarkerPosition === false) {
+    echo "Failed to find begin marker [$endMarker]";
+    exit(-1);
+}
+
+if ($endMarkerPosition <= $beginMarkerPosition) {
+    echo "Error, end marker is before begin marker.";
+    exit(-1);
+}
+
+
+$beforeContent = substr($fileContents, 0, $beginMarkerPosition + strlen($beginMarker));
+$afterContent = substr($fileContents, 0, $beginMarkerPosition);
+
+$newContents = $beforeContent . $linksHtml . $afterContent;
+
+$written = file_put_contents(__DIR__ . "/index.html", $newContents);
+if ($written === false) {
+    echo "Probably failed to write index.html\n";
+    exit(-1);
+}
