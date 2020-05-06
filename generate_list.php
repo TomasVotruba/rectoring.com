@@ -4,6 +4,9 @@ declare(strict_types = 1);
 
 // Please keep these in alphabetical order
 $languagesAndNamedLinks = [
+    'test' => [
+        'test' => 'https://google.com/'
+    ],
     'PHP' => [
         'PHP' => 'https://getrector.org/'
     ],
