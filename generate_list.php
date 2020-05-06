@@ -67,7 +67,6 @@ if ($endMarkerPosition <= $beginMarkerPosition) {
     exit(-1);
 }
 
-
 $beforeContent = substr($fileContents, 0, $beginMarkerPosition + strlen($beginMarker));
 $afterContent = substr($fileContents, $endMarkerPosition);
 
