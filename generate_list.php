@@ -2,9 +2,6 @@
 
 declare(strict_types = 1);
 
-$beginMarker = "<!-- List begin -->";
-$endMarker = "<!-- List end -->";
-
 // Please keep these in alphabetical order
 $languagesAndNamedLinks = [
     'PHP' => [
@@ -20,9 +17,10 @@ $languagesAndNamedLinks = [
     ]
 ];
 
+$beginMarker = "<!-- List begin -->";
+$endMarker = "<!-- List end -->";
 
 $linksHtml = "\n";
-
 $linksHtml .= "  <ul>\n";
 
 foreach ($languagesAndNamedLinks as $language => $namedLinks) {
