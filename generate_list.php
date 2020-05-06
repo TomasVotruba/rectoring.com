@@ -5,7 +5,7 @@ declare(strict_types = 1);
 // Please keep these in alphabetical order
 $languagesAndNamedLinks = [
     'PHP' => [
-        'PHP' => 'https://getrector.org/'
+        'Rector' => 'https://getrector.org/'
     ],
     'Python' => [
         'Bowler' => 'https://pybowler.io/',
