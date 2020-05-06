@@ -1,0 +1,6 @@
+name: 'php_index_update'
+description: 'Update the index.html'
+author: 'Danack'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

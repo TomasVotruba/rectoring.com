@@ -1,0 +1,12 @@
+name: Tests
+on: [push, pull_request]
+
+jobs:
+  unit_tests:
+    name: Index html update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Run code update
+        uses: ./containers/run_php_update

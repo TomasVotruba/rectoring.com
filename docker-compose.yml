@@ -1,0 +1,7 @@
+version: "3"
+services:
+  php_update_index:
+    build: containers/run_php_update
+    volumes:
+      - .:/var/app
+

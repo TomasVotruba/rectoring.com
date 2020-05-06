@@ -78,3 +78,5 @@ if ($written === false) {
     echo "Probably failed to write index.html\n";
     exit(-1);
 }
+
+echo "Fin.\n";
