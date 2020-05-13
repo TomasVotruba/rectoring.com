@@ -6,7 +6,7 @@ declare(strict_types = 1);
 $languagesAndNamedLinks = [
     'Hacklang' => [
         'hhast' => 'https://github.com/hhvm/hhast#migrations'
-    ]
+    ],
     'PHP' => [
         'Rector' => 'https://getrector.org/'
     ],
